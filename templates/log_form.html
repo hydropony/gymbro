@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>New workout</title>
+  </head>
+  <body>
+    <h1>Create new workout log</h1>
+    <form action="/create_log" method="post">
+      <p>
+        Title: <br/>
+        <input type="text" name="title"/>
+      </p>
+      <p>
+        Paste your workout log here: <br/>
+        <textarea rows="10" cols="50" type="text" name="content"></textarea>
+      </p>
+      <p>
+        Choose a workout type: <br/>
+        {% for type in types %}
+        <input type="radio" id="{{type.workout_type}}" name="type" value="{{type.workout_type}}">
+        <label for="{{type.workout_type}}">{{type.workout_type}}</label><br>
+        {% endfor %}
+        <a href="/new_type"><input type="button" value="Create new workout type"/></a>
+      </p>
+      <input type="submit" value="Create"/>
+    </form>
+  </body>
+</html>

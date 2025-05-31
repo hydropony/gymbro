@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Gymbro</title>
+</head>
+
+<body>
+  {% if session.username %}
+  <p>
+    Your name is {{ session.username }}
+  </p>
+  <h1>Workouts</h1>
+  <div>
+    <ul>
+      {% for workout in workouts %}
+      <a href="/workouts/{{ workout.id }}">{{workout.title}}</a>
+      {% endfor %}
+    </ul>
+    <a href="/log_form"><button>Create new</button></a>
+  </div>
+  <p>
+    <a href="/logout">Log out</a>
+  </p>
+  {% else %}
+  <form action="/login" method="post">
+    <p>
+      Username: <br />
+      <input type="text" name="username" />
+    </p>
+    <p>
+      Password: <br />
+      <input type="password" name="password" />
+    </p>
+    <input type="submit" value="Log in" />
+  </form>
+  {% endif %}
+</body>
+
+</html>
