@@ -8,6 +8,11 @@
     <p>Workout type: {{workout.workout_type}}</p>
     <p>{{workout.content}}</p>
     <p>Posted by {{workout.username}} at: {{workout.posted_at}}</p>
+    {% if workout.user_id == session.user_id %}
+    <a href="/edit_log/{{ workout.id }}"><button>Edit</button></a>
+    <a href="/delete_log/{{ workout.id }}"><button>Delete</button></a>
+    <br/>
+    {% endif %}
     <a href="/"><button>Back to main page</button></a>
   </body>
 </html>

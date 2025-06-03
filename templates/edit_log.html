@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Edit your workout log</title>
+  </head>
+  <body>
+    <h1>Edit your workout log</h1>
+    <form action="/edit_log/{{workout.id}}" method="post">
+      <p>
+        Title: <br/>
+        <input type="text" name="title" value="{{workout.title}}"/>
+      </p>
+      <p>
+        Paste your workout log here: <br/>
+        <textarea rows="10" cols="50" type="text" name="content">{{workout.content}}</textarea>
+      </p>
+      <p>
+        Choose a workout type: <br/>
+        {% for type in types %}
+          {% if workout.workout_type == type.workout_type %}
+          <input type="radio" id="{{type.workout_type}}" name="type" value="{{type.workout_type}}" checked>
+          <label for="{{type.workout_type}}">{{type.workout_type}}</label><br>
+          {% else %}
+          <input type="radio" id="{{type.workout_type}}" name="type" value="{{type.workout_type}}">
+          <label for="{{type.workout_type}}">{{type.workout_type}}</label><br>
+          {% endif %}
+          
+        {% endfor %}
+        <a href="/new_type"><input type="button" value="Create new workout type"/></a>
+      </p>
+      <input type="submit" value="Save"/>
+    </form>
+  </body>
+</html>

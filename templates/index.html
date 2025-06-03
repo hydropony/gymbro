@@ -14,7 +14,7 @@
   <div>
     <ul>
       {% for workout in workouts %}
-      <a href="/workouts/{{ workout.id }}">{{workout.title}}</a>
+      <a href="/workouts/{{ workout.id }}">{{workout.title}}</a><br/>
       {% endfor %}
     </ul>
     <a href="/log_form"><button>Create new</button></a>
